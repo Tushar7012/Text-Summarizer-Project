@@ -1,6 +1,7 @@
 from tproj.pipelines.stage_01_data_ingestion import DataIngestionTrainingPipeline
 from tproj.pipelines.stage_02_data_validation import DataValidationTrainingPipeline
 from tproj.pipelines.stage_03_data_transformation import DataTransformationTrainingPipeline
+from tproj.pipelines.stage_04_model_trainer import ModelTrainerTrainingPipeline
 from tproj.logging import logger
 
 
@@ -34,3 +35,16 @@ try:
 except Exception as e:
         logger.exception(e)
         raise e
+
+
+STAGE_NAME = "Model Trainer stage"
+try: 
+   logger.info(f"*******************")
+   logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+   model_trainer = ModelTrainerTrainingPipeline()
+   model_trainer.main()
+   logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+        logger.exception(e)
+        raise e
+
